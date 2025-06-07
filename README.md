@@ -11,21 +11,21 @@ This project showcases a full **Business Intelligence (BI)** pipeline using the 
 
 This Visual Studio 2022 solution includes 3 main BI projects and a Power BI dashboard:
 
-1. **ETL_Project_SSIS**
+1. **ETL_Pubs**
    - Contains multiple `.dtsx` packages
    - Extracts data from the Pubs source database
    - Transforms and loads into the data warehouse schema
 ###  Project_Flow_package Preview:
 ![Project_Flow](https://github.com/user-attachments/assets/e42906ad-60b2-481e-95b9-ef36e66297fe)
 
-2. **OLAP_Project_SSAS**
+2. **OLAP_MD_Pubs**
    - Multidimensional model (MD)
    - Cubes built on the transformed data
    - Dimensions: Authors, Titles, Publishers, Sales, etc.
 ###  Sales Cube Preview:
 ![Sales_Cube](https://github.com/user-attachments/assets/13b94a29-cf19-4c45-82cb-a4bf2dcecee6)
 
- 3. **Reporting_Project_SSRS**
+ 3. **Report_Pubs**
    - Contains `.rdl` report files designed in SQL Server Reporting Services (SSRS)
    - Interactive reports include:
      - **📍 Store Directory by Location** – Lists all bookstores, filterable by **City** and **State**
@@ -33,7 +33,7 @@ This Visual Studio 2022 solution includes 3 main BI projects and a Power BI dash
      - **💰 Sales Summary by Store** – Aggregates total sales per store, searchable by **City** and **State**, and grouped by store
 
 
-## 📊 Power BI Dashboard: Book Sales Analysis
+## 📊 Dashboard Pubs (Power Bi Dashboard): Book Sales Analysis
 
 This Power BI dashboard provides interactive visual insights based on the Microsoft Pubs database, helping stakeholders understand key metrics in book sales performance.
 
@@ -60,9 +60,3 @@ This Power BI dashboard provides interactive visual insights based on the Micros
 - SSIS, SSAS (Multidimensional), SSRS
 - Power BI Desktop
 - T-SQL
-
-## 🚀 How to Run the Project
-
-1. Clone the repo:
-   ```bash
-   git clone https://github.com/YourUsername/BI-Sample-Pubs-Project.git
