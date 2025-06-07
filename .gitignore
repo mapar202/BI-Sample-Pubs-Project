@@ -1,0 +1,30 @@
+# === VISUAL STUDIO ===
+.vs/
+*.user
+*.suo
+
+# === BUILD OUTPUT ===
+bin/
+obj/
+
+# === BACKUPS / TEMP FILES ===
+*.log
+*.tmp
+*.bak
+*.cache
+
+# === POWER BI ===
+*.pbix-autosave
+
+# === SSAS ===
+*.dply
+*.deploy.xml
+*.configsettings
+*.asdatabase
+
+# === SSIS ===
+*.manifest
+
+# === MISC ===
+Thumbs.db
+Desktop.ini
