@@ -1,0 +1,2795 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/11/2024 9:04:49 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-1A195DD"
+  DTS:CreatorName="DESKTOP-1A195DD\Behrouz"
+  DTS:DTSID="{3A358666-2148-4E27-81C3-91CE7B65FC74}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5556.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="05_DimEmployees"
+  DTS:PackageType="5"
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{9B5EAEAC-96B1-4FFC-A8F4-768F69F88603}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load Data from Staging to DW"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{0B3C6071-00C1-4024-8FF9-9C881C726FCC}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Data from Staging to DW"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load Data from Staging to DW\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Data from Staging to DW\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Data from Staging to DW\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load Data from Staging to DW\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\Derived Column.Outputs[Derived Column Output].Columns[Enddate]"
+                      dataType="dbTimeStamp"
+                      description="Enddate"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Data from Staging to DW\Derived Column.Outputs[Derived Column Output].Columns[Enddate]"
+                      name="Enddate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Data from Staging to DW\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load Data from Staging to DW\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Data from Staging to DW\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Data from Staging to DW\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Data from Staging to DW\Derived Column 1"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Data from Staging to DW\Derived Column 1.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Data from Staging to DW\Derived Column 1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load Data from Staging to DW\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\Derived Column 1.Outputs[Derived Column Output].Columns[Startdate]"
+                      dataType="dbTimeStamp"
+                      description="Startdate"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Data from Staging to DW\Derived Column 1.Outputs[Derived Column Output].Columns[Startdate]"
+                      name="Startdate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Data from Staging to DW\Derived Column 1.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load Data from Staging to DW\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Data from Staging to DW\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Data from Staging to DW\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Data from Staging to DW\Get PublisherKey"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Get PublisherKey"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT    Publisherskey, pubishersalternatekey
+FROM         DimPublishers</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT    Publisherskey, pubishersalternatekey
+FROM         DimPublishers) [refTable]
+where [refTable].[pubishersalternatekey] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Publisherskey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="pubishersalternatekey" dataType="DT_STR" length="4" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[pub_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Data from Staging to DW\Get PublisherKey.Connections[OleDbConnection]"
+                  connectionManagerID="{C6104A58-B15E-48BE-9BA6-86AD7E0D3224}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.PubsDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Data from Staging to DW\Get PublisherKey.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\Get PublisherKey.Inputs[Lookup Input].Columns[pub_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="pub_id"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[pub_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">pubishersalternatekey</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Data from Staging to DW\Get PublisherKey.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load Data from Staging to DW\Get PublisherKey.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\Get PublisherKey.Outputs[Lookup Match Output].Columns[Publisherskey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load Data from Staging to DW\Get PublisherKey.Outputs[Lookup Match Output].Columns[Publisherskey]"
+                      name="Publisherskey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Publisherskey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Data from Staging to DW\Get PublisherKey.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load Data from Staging to DW\Get PublisherKey.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Data from Staging to DW\Get PublisherKey.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load Data from Staging to DW\Get PublisherKey.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\Get PublisherKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Data from Staging to DW\Get PublisherKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\Get PublisherKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Data from Staging to DW\Get PublisherKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Data from Staging to DW\Insert Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Insert Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimEmployee]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Data from Staging to DW\Insert Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{C6104A58-B15E-48BE-9BA6-86AD7E0D3224}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.PubsDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Data from Staging to DW\Insert Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\Insert Destination.Inputs[OLE DB Destination Input].Columns[emp_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="9"
+                      cachedName="emp_id"
+                      externalMetadataColumnId="Package\Load Data from Staging to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeAlternateKey]"
+                      lineageId="Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[emp_id]" />
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\Insert Destination.Inputs[OLE DB Destination Input].Columns[Publisherskey]"
+                      cachedDataType="i4"
+                      cachedName="Publisherskey"
+                      externalMetadataColumnId="Package\Load Data from Staging to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[PublisherKey]"
+                      lineageId="Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[Publisherskey]" />
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\Insert Destination.Inputs[OLE DB Destination Input].Columns[fname]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="fname"
+                      externalMetadataColumnId="Package\Load Data from Staging to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[fname]"
+                      lineageId="Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[fname]" />
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\Insert Destination.Inputs[OLE DB Destination Input].Columns[lname]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="lname"
+                      externalMetadataColumnId="Package\Load Data from Staging to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[lname]"
+                      lineageId="Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[lname]" />
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\Insert Destination.Inputs[OLE DB Destination Input].Columns[minit]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="minit"
+                      externalMetadataColumnId="Package\Load Data from Staging to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[minit]"
+                      lineageId="Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[minit]" />
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\Insert Destination.Inputs[OLE DB Destination Input].Columns[job_lvl]"
+                      cachedDataType="ui1"
+                      cachedName="job_lvl"
+                      externalMetadataColumnId="Package\Load Data from Staging to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[job_lvl]"
+                      lineageId="Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[job_lvl]" />
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\Insert Destination.Inputs[OLE DB Destination Input].Columns[hire_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="hire_date"
+                      externalMetadataColumnId="Package\Load Data from Staging to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[hire_date]"
+                      lineageId="Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[hire_date]" />
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\Insert Destination.Inputs[OLE DB Destination Input].Columns[Startdate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Startdate"
+                      externalMetadataColumnId="Package\Load Data from Staging to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Startdate]"
+                      lineageId="Package\Load Data from Staging to DW\Derived Column 1.Outputs[Derived Column Output].Columns[Startdate]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeKey]"
+                      dataType="i4"
+                      name="EmployeeKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeAlternateKey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="9"
+                      name="EmployeeAlternateKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[PublisherKey]"
+                      dataType="i4"
+                      name="PublisherKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[fname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="fname" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[lname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="lname" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[minit]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="minit" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[job_lvl]"
+                      dataType="ui1"
+                      name="job_lvl" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[hire_date]"
+                      dataType="dbTimeStamp"
+                      name="hire_date" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Startdate]"
+                      dataType="dbTimeStamp"
+                      name="Startdate" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging to DW\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Enddate]"
+                      dataType="dbTimeStamp"
+                      name="Enddate" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Data from Staging to DW\Insert Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load Data from Staging to DW\Insert Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Data from Staging to DW\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Data from Staging to DW\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Data from Staging to DW\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[DimEmployee] SET [Enddate] = ? WHERE [EmployeeAlternateKey] = ? AND [Enddate] IS NULL</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Data from Staging to DW\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="{C6104A58-B15E-48BE-9BA6-86AD7E0D3224}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.PubsDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Data from Staging to DW\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\OLE DB Command.Inputs[OLE DB Command Input].Columns[emp_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="9"
+                      cachedName="emp_id"
+                      externalMetadataColumnId="Package\Load Data from Staging to DW\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[emp_id]" />
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\OLE DB Command.Inputs[OLE DB Command Input].Columns[Enddate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Enddate"
+                      externalMetadataColumnId="Package\Load Data from Staging to DW\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Load Data from Staging to DW\Derived Column.Outputs[Derived Column Output].Columns[Enddate]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging to DW\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="dbTimeStamp"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging to DW\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="9"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Data from Staging to DW\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Load Data from Staging to DW\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Data from Staging to DW\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Load Data from Staging to DW\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Data from Staging to DW\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Data from Staging to DW\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Data from Staging to DW\OLE DB Command 1"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command 1"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[DimEmployee] SET [fname] = ?,[hire_date] = ?,[job_lvl] = ?,[lname] = ?,[minit] = ? WHERE [EmployeeAlternateKey] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Data from Staging to DW\OLE DB Command 1.Connections[OleDbConnection]"
+                  connectionManagerID="{C6104A58-B15E-48BE-9BA6-86AD7E0D3224}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.PubsDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Data from Staging to DW\OLE DB Command 1.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[emp_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="9"
+                      cachedName="emp_id"
+                      externalMetadataColumnId="Package\Load Data from Staging to DW\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[emp_id]" />
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[fname]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="fname"
+                      externalMetadataColumnId="Package\Load Data from Staging to DW\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[fname]" />
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[hire_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="hire_date"
+                      externalMetadataColumnId="Package\Load Data from Staging to DW\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[hire_date]" />
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[job_lvl]"
+                      cachedDataType="ui1"
+                      cachedName="job_lvl"
+                      externalMetadataColumnId="Package\Load Data from Staging to DW\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[job_lvl]" />
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[lname]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="lname"
+                      externalMetadataColumnId="Package\Load Data from Staging to DW\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[lname]" />
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[minit]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="minit"
+                      externalMetadataColumnId="Package\Load Data from Staging to DW\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[minit]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging to DW\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging to DW\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="dbTimeStamp"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging to DW\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="ui1"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging to DW\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging to DW\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging to DW\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      codePage="1252"
+                      dataType="str"
+                      length="9"
+                      name="Param_5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Data from Staging to DW\OLE DB Command 1.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Load Data from Staging to DW\OLE DB Command 1.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Data from Staging to DW\OLE DB Command 1.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Load Data from Staging to DW\OLE DB Command 1.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Data from Staging to DW\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Data from Staging to DW\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Data from Staging to DW\Slowly Changing Dimension"
+              componentClassID="Microsoft.SCD"
+              contactInfo="Slowly Changing Dimension;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Updates a SQL Server Analysis Services data warehouse dimension. Update dimension records that are already present and  insert dimension records that aren't. For example, update the DimProduct table of the AdventureWorksDW OLAP database with data from the Products table in the AdventureWorks OLTP database."
+              name="Slowly Changing Dimension"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SELECT statement used to create a schema rowset."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [EmployeeAlternateKey], [fname], [hire_date], [job_lvl], [lname], [minit], [PublisherKey],[Startdate],[Enddate] FROM [dbo].[DimEmployee]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
+                  name="CurrentRowWhere">[Startdate] IS NOT NULL AND [Enddate] IS NULL</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether historical attribute updates are directed to the transformation output for changing attribute updates."
+                  name="UpdateChangingAttributeHistory">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when columns with fixed attributes contain changes."
+                  name="FailOnFixedAttributeChange">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the column name for the inferred member."
+                  name="InferredMemberIndicator"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether inferred member updates are detected."
+                  name="EnableInferredMember">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when a lookup of an existing record fails."
+                  name="FailOnLookupFailure">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies that all rows in the input are new or the transformation detects the change type."
+                  name="IncomingRowChangeType"
+                  typeConverter="IncomingRowChangeType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Connections[LookupConnection]"
+                  connectionManagerID="{C6104A58-B15E-48BE-9BA6-86AD7E0D3224}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.PubsDW]"
+                  description="Defines the connection to use for lookups in the dimension table"
+                  name="LookupConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+                  name="Slowly Changing Dimension Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[emp_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="9"
+                      cachedName="emp_id"
+                      externalMetadataColumnId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[EmployeeAlternateKey]"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[emp_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[fname]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="fname"
+                      externalMetadataColumnId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[fname]"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[fname]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[hire_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="hire_date"
+                      externalMetadataColumnId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[hire_date]"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[hire_date]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[job_lvl]"
+                      cachedDataType="ui1"
+                      cachedName="job_lvl"
+                      externalMetadataColumnId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[job_lvl]"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[job_lvl]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[lname]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="lname"
+                      externalMetadataColumnId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[lname]"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[lname]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[minit]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="minit"
+                      externalMetadataColumnId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[minit]"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[minit]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Publisherskey]"
+                      cachedDataType="i4"
+                      cachedName="Publisherskey"
+                      externalMetadataColumnId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[PublisherKey]"
+                      lineageId="Package\Load Data from Staging to DW\Get PublisherKey.Outputs[Lookup Match Output].Columns[Publisherskey]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[EmployeeAlternateKey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="9"
+                      name="EmployeeAlternateKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[fname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="fname" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[hire_date]"
+                      dataType="dbTimeStamp"
+                      name="hire_date" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[job_lvl]"
+                      dataType="ui1"
+                      name="job_lvl" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[lname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="lname" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[minit]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="minit" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[PublisherKey]"
+                      dataType="i4"
+                      name="PublisherKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Startdate]"
+                      dataType="dbTimeStamp"
+                      name="Startdate" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Enddate]"
+                      dataType="dbTimeStamp"
+                      name="Enddate" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Outputs[Unchanged Output]"
+                  description="Unchanged rows"
+                  exclusionGroup="1"
+                  name="Unchanged Output"
+                  synchronousInputId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Outputs[New Output]"
+                  description="New rows"
+                  exclusionGroup="1"
+                  name="New Output"
+                  synchronousInputId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Outputs[Fixed Attribute Output]"
+                  description="Rows with changes in columns tagged FixedAttribute"
+                  exclusionGroup="1"
+                  name="Fixed Attribute Output"
+                  synchronousInputId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Outputs[Changing Attribute Updates Output]"
+                  description="These rows contain new information for ChangingAttribute (Type 1) column changes"
+                  exclusionGroup="1"
+                  name="Changing Attribute Updates Output"
+                  synchronousInputId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Outputs[Historical Attribute Inserts Output]"
+                  description="HistoricalAttribute (Type 2) changes result in these new rows"
+                  exclusionGroup="2"
+                  name="Historical Attribute Inserts Output"
+                  synchronousInputId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Outputs[Inferred Member Updates Output]"
+                  description="Information to update unpopulated initial dimension row"
+                  exclusionGroup="1"
+                  name="Inferred Member Updates Output"
+                  synchronousInputId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Data from Staging to DW\Staging DimEmployee"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Staging DimEmployee"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Stg_DimEmployees]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Data from Staging to DW\Staging DimEmployee.Connections[OleDbConnection]"
+                  connectionManagerID="{901DACE8-98F2-48B6-AC41-02D05AF9424F}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.Pubs_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[pub_id]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[pub_id]"
+                      length="4"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[pub_id]"
+                      name="pub_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[emp_id]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[emp_id]"
+                      length="9"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[emp_id]"
+                      name="emp_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[fname]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[fname]"
+                      length="20"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[fname]"
+                      name="fname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[minit]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[minit]"
+                      length="1"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[minit]"
+                      name="minit"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[lname]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[lname]"
+                      length="30"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[lname]"
+                      name="lname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[job_lvl]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[job_lvl]"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[job_lvl]"
+                      name="job_lvl"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[hire_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[hire_date]"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[hire_date]"
+                      name="hire_date"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[pub_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      name="pub_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[emp_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="9"
+                      name="emp_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[fname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="fname" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[minit]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="minit" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[lname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="lname" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[job_lvl]"
+                      dataType="ui1"
+                      name="job_lvl" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].ExternalColumns[hire_date]"
+                      dataType="dbTimeStamp"
+                      name="hire_date" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Error Output].Columns[pub_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Error Output].Columns[pub_id]"
+                      name="pub_id" />
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Error Output].Columns[emp_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="9"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Error Output].Columns[emp_id]"
+                      name="emp_id" />
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Error Output].Columns[fname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Error Output].Columns[fname]"
+                      name="fname" />
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Error Output].Columns[minit]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Error Output].Columns[minit]"
+                      name="minit" />
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Error Output].Columns[lname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Error Output].Columns[lname]"
+                      name="lname" />
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Error Output].Columns[job_lvl]"
+                      dataType="ui1"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Error Output].Columns[job_lvl]"
+                      name="job_lvl" />
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Error Output].Columns[hire_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Error Output].Columns[hire_date]"
+                      name="hire_date" />
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Data from Staging to DW\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Load Data from Staging to DW\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\Union All.Inputs[Union All Input 1].Columns[pub_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="pub_id"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[pub_id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[pub_id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\Union All.Inputs[Union All Input 1].Columns[emp_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="9"
+                      cachedName="emp_id"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[emp_id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[emp_id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\Union All.Inputs[Union All Input 1].Columns[fname]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="fname"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[fname]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[fname]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\Union All.Inputs[Union All Input 1].Columns[minit]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="minit"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[minit]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[minit]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\Union All.Inputs[Union All Input 1].Columns[lname]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="lname"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[lname]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[lname]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\Union All.Inputs[Union All Input 1].Columns[job_lvl]"
+                      cachedDataType="ui1"
+                      cachedName="job_lvl"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[job_lvl]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[job_lvl]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\Union All.Inputs[Union All Input 1].Columns[hire_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="hire_date"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[hire_date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[hire_date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\Union All.Inputs[Union All Input 1].Columns[Publisherskey]"
+                      cachedDataType="i4"
+                      cachedName="Publisherskey"
+                      lineageId="Package\Load Data from Staging to DW\Get PublisherKey.Outputs[Lookup Match Output].Columns[Publisherskey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[Publisherskey]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Load Data from Staging to DW\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\Union All.Inputs[Union All Input 2].Columns[pub_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="pub_id"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[pub_id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[pub_id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\Union All.Inputs[Union All Input 2].Columns[emp_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="9"
+                      cachedName="emp_id"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[emp_id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[emp_id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\Union All.Inputs[Union All Input 2].Columns[fname]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="fname"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[fname]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[fname]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\Union All.Inputs[Union All Input 2].Columns[minit]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="minit"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[minit]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[minit]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\Union All.Inputs[Union All Input 2].Columns[lname]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="lname"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[lname]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[lname]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\Union All.Inputs[Union All Input 2].Columns[job_lvl]"
+                      cachedDataType="ui1"
+                      cachedName="job_lvl"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[job_lvl]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[job_lvl]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\Union All.Inputs[Union All Input 2].Columns[hire_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="hire_date"
+                      lineageId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output].Columns[hire_date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[hire_date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data from Staging to DW\Union All.Inputs[Union All Input 2].Columns[Publisherskey]"
+                      cachedDataType="i4"
+                      cachedName="Publisherskey"
+                      lineageId="Package\Load Data from Staging to DW\Get PublisherKey.Outputs[Lookup Match Output].Columns[Publisherskey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[Publisherskey]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Load Data from Staging to DW\Union All.Inputs[Union All Input 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[pub_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      lineageId="Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[pub_id]"
+                      name="pub_id" />
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[emp_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="9"
+                      lineageId="Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[emp_id]"
+                      name="emp_id" />
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[fname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[fname]"
+                      name="fname" />
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[minit]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[minit]"
+                      name="minit" />
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[lname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[lname]"
+                      name="lname" />
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[job_lvl]"
+                      dataType="ui1"
+                      lineageId="Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[job_lvl]"
+                      name="job_lvl" />
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[hire_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[hire_date]"
+                      name="hire_date" />
+                    <outputColumn
+                      refId="Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[Publisherskey]"
+                      dataType="i4"
+                      lineageId="Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1].Columns[Publisherskey]"
+                      name="Publisherskey" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load Data from Staging to DW.Paths[Changing Attribute Updates Output]"
+              endId="Package\Load Data from Staging to DW\OLE DB Command 1.Inputs[OLE DB Command Input]"
+              name="Changing Attribute Updates Output"
+              startId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Outputs[Changing Attribute Updates Output]" />
+            <path
+              refId="Package\Load Data from Staging to DW.Paths[Derived Column Output]"
+              endId="Package\Load Data from Staging to DW\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Derived Column Output"
+              startId="Package\Load Data from Staging to DW\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Load Data from Staging to DW.Paths[Derived Column Output1]"
+              endId="Package\Load Data from Staging to DW\Insert Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Load Data from Staging to DW\Derived Column 1.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Load Data from Staging to DW.Paths[Historical Attribute Inserts Output]"
+              endId="Package\Load Data from Staging to DW\Derived Column.Inputs[Derived Column Input]"
+              name="Historical Attribute Inserts Output"
+              startId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Outputs[Historical Attribute Inserts Output]" />
+            <path
+              refId="Package\Load Data from Staging to DW.Paths[Lookup Match Output]"
+              endId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+              name="Lookup Match Output"
+              startId="Package\Load Data from Staging to DW\Get PublisherKey.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load Data from Staging to DW.Paths[New Output]"
+              endId="Package\Load Data from Staging to DW\Union All.Inputs[Union All Input 1]"
+              name="New Output"
+              startId="Package\Load Data from Staging to DW\Slowly Changing Dimension.Outputs[New Output]" />
+            <path
+              refId="Package\Load Data from Staging to DW.Paths[OLE DB Command Output]"
+              endId="Package\Load Data from Staging to DW\Union All.Inputs[Union All Input 2]"
+              name="OLE DB Command Output"
+              startId="Package\Load Data from Staging to DW\OLE DB Command.Outputs[OLE DB Command Output]" />
+            <path
+              refId="Package\Load Data from Staging to DW.Paths[OLE DB Source Output]"
+              endId="Package\Load Data from Staging to DW\Get PublisherKey.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load Data from Staging to DW\Staging DimEmployee.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Load Data from Staging to DW.Paths[Union All Output 1]"
+              endId="Package\Load Data from Staging to DW\Derived Column 1.Inputs[Derived Column Input]"
+              name="Union All Output 1"
+              startId="Package\Load Data from Staging to DW\Union All.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load Data OP to Staging"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{FFF746F7-B2D6-4330-B084-12084346E624}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Data OP to Staging"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load Data OP to Staging\Employees Tbl-OP"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Employees Tbl-OP"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[employee]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT    emp_id, fname, minit, lname, job_lvl, pub_id, hire_date
+FROM         employee</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Data OP to Staging\Employees Tbl-OP.Connections[OleDbConnection]"
+                  connectionManagerID="{B6E13E96-402D-4B52-8BB1-18E5F0E0AFE6}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.pubs]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output].Columns[emp_id]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output].ExternalColumns[emp_id]"
+                      length="9"
+                      lineageId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output].Columns[emp_id]"
+                      name="emp_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output].Columns[fname]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output].ExternalColumns[fname]"
+                      length="20"
+                      lineageId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output].Columns[fname]"
+                      name="fname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output].Columns[minit]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output].ExternalColumns[minit]"
+                      length="1"
+                      lineageId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output].Columns[minit]"
+                      name="minit"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output].Columns[lname]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output].ExternalColumns[lname]"
+                      length="30"
+                      lineageId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output].Columns[lname]"
+                      name="lname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output].Columns[job_lvl]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output].ExternalColumns[job_lvl]"
+                      lineageId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output].Columns[job_lvl]"
+                      name="job_lvl"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output].Columns[pub_id]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output].ExternalColumns[pub_id]"
+                      length="4"
+                      lineageId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output].Columns[pub_id]"
+                      name="pub_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output].Columns[hire_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output].ExternalColumns[hire_date]"
+                      lineageId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output].Columns[hire_date]"
+                      name="hire_date"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output].ExternalColumns[emp_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="9"
+                      name="emp_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output].ExternalColumns[fname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="fname" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output].ExternalColumns[minit]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="minit" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output].ExternalColumns[lname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="lname" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output].ExternalColumns[job_lvl]"
+                      dataType="ui1"
+                      name="job_lvl" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output].ExternalColumns[pub_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      name="pub_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output].ExternalColumns[hire_date]"
+                      dataType="dbTimeStamp"
+                      name="hire_date" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Error Output].Columns[emp_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="9"
+                      lineageId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Error Output].Columns[emp_id]"
+                      name="emp_id" />
+                    <outputColumn
+                      refId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Error Output].Columns[fname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Error Output].Columns[fname]"
+                      name="fname" />
+                    <outputColumn
+                      refId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Error Output].Columns[minit]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Error Output].Columns[minit]"
+                      name="minit" />
+                    <outputColumn
+                      refId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Error Output].Columns[lname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Error Output].Columns[lname]"
+                      name="lname" />
+                    <outputColumn
+                      refId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Error Output].Columns[job_lvl]"
+                      dataType="ui1"
+                      lineageId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Error Output].Columns[job_lvl]"
+                      name="job_lvl" />
+                    <outputColumn
+                      refId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Error Output].Columns[pub_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      lineageId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Error Output].Columns[pub_id]"
+                      name="pub_id" />
+                    <outputColumn
+                      refId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Error Output].Columns[hire_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Error Output].Columns[hire_date]"
+                      name="hire_date" />
+                    <outputColumn
+                      refId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Data OP to Staging\Staging DimEmployee"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Staging DimEmployee"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Stg_DimEmployees]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Data OP to Staging\Staging DimEmployee.Connections[OleDbConnection]"
+                  connectionManagerID="{901DACE8-98F2-48B6-AC41-02D05AF9424F}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.Pubs_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Data OP to Staging\Staging DimEmployee.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Data OP to Staging\Staging DimEmployee.Inputs[OLE DB Destination Input].Columns[emp_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="9"
+                      cachedName="emp_id"
+                      externalMetadataColumnId="Package\Load Data OP to Staging\Staging DimEmployee.Inputs[OLE DB Destination Input].ExternalColumns[emp_id]"
+                      lineageId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output].Columns[emp_id]" />
+                    <inputColumn
+                      refId="Package\Load Data OP to Staging\Staging DimEmployee.Inputs[OLE DB Destination Input].Columns[fname]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="fname"
+                      externalMetadataColumnId="Package\Load Data OP to Staging\Staging DimEmployee.Inputs[OLE DB Destination Input].ExternalColumns[fname]"
+                      lineageId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output].Columns[fname]" />
+                    <inputColumn
+                      refId="Package\Load Data OP to Staging\Staging DimEmployee.Inputs[OLE DB Destination Input].Columns[minit]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="minit"
+                      externalMetadataColumnId="Package\Load Data OP to Staging\Staging DimEmployee.Inputs[OLE DB Destination Input].ExternalColumns[minit]"
+                      lineageId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output].Columns[minit]" />
+                    <inputColumn
+                      refId="Package\Load Data OP to Staging\Staging DimEmployee.Inputs[OLE DB Destination Input].Columns[lname]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="lname"
+                      externalMetadataColumnId="Package\Load Data OP to Staging\Staging DimEmployee.Inputs[OLE DB Destination Input].ExternalColumns[lname]"
+                      lineageId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output].Columns[lname]" />
+                    <inputColumn
+                      refId="Package\Load Data OP to Staging\Staging DimEmployee.Inputs[OLE DB Destination Input].Columns[job_lvl]"
+                      cachedDataType="ui1"
+                      cachedName="job_lvl"
+                      externalMetadataColumnId="Package\Load Data OP to Staging\Staging DimEmployee.Inputs[OLE DB Destination Input].ExternalColumns[job_lvl]"
+                      lineageId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output].Columns[job_lvl]" />
+                    <inputColumn
+                      refId="Package\Load Data OP to Staging\Staging DimEmployee.Inputs[OLE DB Destination Input].Columns[pub_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="pub_id"
+                      externalMetadataColumnId="Package\Load Data OP to Staging\Staging DimEmployee.Inputs[OLE DB Destination Input].ExternalColumns[pub_id]"
+                      lineageId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output].Columns[pub_id]" />
+                    <inputColumn
+                      refId="Package\Load Data OP to Staging\Staging DimEmployee.Inputs[OLE DB Destination Input].Columns[hire_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="hire_date"
+                      externalMetadataColumnId="Package\Load Data OP to Staging\Staging DimEmployee.Inputs[OLE DB Destination Input].ExternalColumns[hire_date]"
+                      lineageId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output].Columns[hire_date]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Data OP to Staging\Staging DimEmployee.Inputs[OLE DB Destination Input].ExternalColumns[pub_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      name="pub_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data OP to Staging\Staging DimEmployee.Inputs[OLE DB Destination Input].ExternalColumns[emp_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="9"
+                      name="emp_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data OP to Staging\Staging DimEmployee.Inputs[OLE DB Destination Input].ExternalColumns[fname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="fname" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data OP to Staging\Staging DimEmployee.Inputs[OLE DB Destination Input].ExternalColumns[minit]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="minit" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data OP to Staging\Staging DimEmployee.Inputs[OLE DB Destination Input].ExternalColumns[lname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="lname" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data OP to Staging\Staging DimEmployee.Inputs[OLE DB Destination Input].ExternalColumns[job_lvl]"
+                      dataType="ui1"
+                      name="job_lvl" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data OP to Staging\Staging DimEmployee.Inputs[OLE DB Destination Input].ExternalColumns[hire_date]"
+                      dataType="dbTimeStamp"
+                      name="hire_date" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Data OP to Staging\Staging DimEmployee.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load Data OP to Staging\Staging DimEmployee.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data OP to Staging\Staging DimEmployee.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Data OP to Staging\Staging DimEmployee.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Data OP to Staging\Staging DimEmployee.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Data OP to Staging\Staging DimEmployee.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load Data OP to Staging.Paths[OLE DB Source Output]"
+              endId="Package\Load Data OP to Staging\Staging DimEmployee.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load Data OP to Staging\Employees Tbl-OP.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate DimEmployees"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{8D2AB35C-C1AC-46F0-A2A6-2637D6360DB5}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate DimEmployees"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{901DACE8-98F2-48B6-AC41-02D05AF9424F}"
+          SQLTask:SqlStatementSource="Truncate Table Stg_DimEmployees" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{3F3E737E-FC1F-4A7B-9DFD-EBAAB635BFC1}"
+      DTS:From="Package\Load Data OP to Staging"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Load Data from Staging to DW" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{F61A2DAA-96E8-4B55-A65D-333FCD94F009}"
+      DTS:From="Package\Truncate DimEmployees"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Load Data OP to Staging" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="192.8,41.6"
+          Id="Package\Truncate DimEmployees"
+          TopLeft="155.500000319311,10.0882352900959" />
+        <NodeLayout
+          Size="223.2,41.6"
+          Id="Package\Load Data from Staging to DW"
+          TopLeft="122.857143118673,207.235293935997" />
+        <NodeLayout
+          Size="194.4,41.6"
+          Id="Package\Load Data OP to Staging"
+          TopLeft="142.142857445442,101.705882263792" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="236.900000282058,143.305882263792">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,63.9294116722053"
+              Start="0,0"
+              End="0,56.4294116722053">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.4294116722053" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="251.900000319311,51.6882352900959">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-12.557142873869,50.0176469736961"
+              Start="0,0"
+              End="-12.557142873869,42.5176469736961">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.0088234868481" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.0088234868481"
+                    Point2="0,25.0088234868481"
+                    Point3="-4,25.0088234868481" />
+                  <mssgle:LineSegment
+                    End="-8.55714287386903,25.0088234868481" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-8.55714287386903,25.0088234868481"
+                    Point2="-12.557142873869,25.0088234868481"
+                    Point3="-12.557142873869,29.0088234868481" />
+                  <mssgle:LineSegment
+                    End="-12.557142873869,42.5176469736961" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load Data from Staging to DW">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="181.6,41.6"
+          Id="Package\Load Data from Staging to DW\Staging DimEmployee"
+          TopLeft="140.1,5.49999999999995" />
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\Load Data from Staging to DW\Union All"
+          TopLeft="170.9,513.5" />
+        <NodeLayout
+          Size="174.4,41.6"
+          Id="Package\Load Data from Staging to DW\OLE DB Command 1"
+          TopLeft="291.7,310.3" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Load Data from Staging to DW\OLE DB Command"
+          TopLeft="5.50000000000003,411.9" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Load Data from Staging to DW\Insert Destination"
+          TopLeft="149.7,716.699999999999" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Load Data from Staging to DW\Derived Column 1"
+          TopLeft="149.7,615.099999999999" />
+        <NodeLayout
+          Size="208,41.6"
+          Id="Package\Load Data from Staging to DW\Slowly Changing Dimension"
+          TopLeft="126.9,208.7" />
+        <NodeLayout
+          Size="157.6,41.6"
+          Id="Package\Load Data from Staging to DW\Get PublisherKey"
+          TopLeft="152.1,107.1" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Load Data from Staging to DW\Derived Column"
+          TopLeft="17.5,310.3" />
+        <EdgeLayout
+          Id="Package\Load Data from Staging to DW.Paths[Union All Output 1]"
+          TopLeft="230.9,555.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Data from Staging to DW.Paths[OLE DB Source Output]"
+          TopLeft="230.9,47.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Data from Staging to DW.Paths[OLE DB Command Output]"
+          TopLeft="87.9,453.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="124.333333333333,59.9999999999999"
+              Start="0,0"
+              End="124.333333333333,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5263157894736" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5263157894736"
+                    Point2="0,35.5263157894736"
+                    Point3="4,35.5263157894736" />
+                  <mssgle:LineSegment
+                    End="120.333333333333,35.5263157894736" />
+                  <mssgle:CubicBezierSegment
+                    Point1="120.333333333333,35.5263157894736"
+                    Point2="124.333333333333,35.5263157894736"
+                    Point3="124.333333333333,39.5263157894736" />
+                  <mssgle:LineSegment
+                    End="124.333333333333,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Data from Staging to DW.Paths[New Output]"
+          TopLeft="230.9,250.3">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="18.6666666666667,263.2"
+              Start="0,0"
+              End="18.6666666666667,255.7">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,151.842105263158" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,151.842105263158"
+                    Point2="0,155.842105263158"
+                    Point3="4,155.842105263158" />
+                  <mssgle:LineSegment
+                    End="14.6666666666667,155.842105263158" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14.6666666666667,155.842105263158"
+                    Point2="18.6666666666667,155.842105263158"
+                    Point3="18.6666666666667,159.842105263158" />
+                  <mssgle:LineSegment
+                    End="18.6666666666667,255.7" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-17.7580533854167,160.842105263158,54.1827734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Data from Staging to DW.Paths[Lookup Match Output]"
+          TopLeft="230.9,148.7">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453124999999,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Data from Staging to DW.Paths[Historical Attribute Inserts Output]"
+          TopLeft="180.9,250.3">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-87,59.9999999999999"
+              Start="0,0"
+              End="-87,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.506329113924" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.506329113924"
+                    Point2="0,20.506329113924"
+                    Point3="-4,20.506329113924" />
+                  <mssgle:LineSegment
+                    End="-83,20.506329113924" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-83,20.506329113924"
+                    Point2="-87,20.506329113924"
+                    Point3="-87,24.506329113924" />
+                  <mssgle:LineSegment
+                    End="-87,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-118.55638671875,25.506329113924,150.1127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Data from Staging to DW.Paths[Derived Column Output1]"
+          TopLeft="230.9,656.699999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Data from Staging to DW.Paths[Derived Column Output]"
+          TopLeft="90.9,351.9">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Data from Staging to DW.Paths[Changing Attribute Updates Output]"
+          TopLeft="280.9,250.3">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="98,59.9999999999999"
+              Start="0,0"
+              End="98,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.506329113924" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.506329113924"
+                    Point2="0,20.506329113924"
+                    Point3="4,20.506329113924" />
+                  <mssgle:LineSegment
+                    End="94,20.506329113924" />
+                  <mssgle:CubicBezierSegment
+                    Point1="94,20.506329113924"
+                    Point2="98,20.506329113924"
+                    Point3="98,24.506329113924" />
+                  <mssgle:LineSegment
+                    End="98,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-29.53390625,25.506329113924,157.0678125,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Data from Staging to DW\Staging DimEmployee">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Data from Staging to DW\Slowly Changing Dimension">
+    <Properties>
+      <Property>
+        <Name>SCDMetadata</Name>
+        <Value
+          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SCDWizardMetadata xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionID&gt;{C6104A58-B15E-48BE-9BA6-86AD7E0D3224}&lt;/ConnectionID&gt;
+  &lt;TableName&gt;[dbo].[DimEmployee]&lt;/TableName&gt;
+  &lt;InputToColumnsCollection&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Staging DimEmployee.Outputs[OLE DB Source Output].Columns[emp_id]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;EmployeeAlternateKey&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Staging DimEmployee.Outputs[OLE DB Source Output].Columns[fname]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;fname&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Staging DimEmployee.Outputs[OLE DB Source Output].Columns[hire_date]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;hire_date&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Staging DimEmployee.Outputs[OLE DB Source Output].Columns[job_lvl]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;job_lvl&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Staging DimEmployee.Outputs[OLE DB Source Output].Columns[lname]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;lname&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Staging DimEmployee.Outputs[OLE DB Source Output].Columns[minit]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;minit&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Get PublisherKey.Outputs[Lookup Match Output].Columns[Publisherskey]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;PublisherKey&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+  &lt;/InputToColumnsCollection&gt;
+  &lt;GeneratedComponentsIdentificationStrings&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Derived Column&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Union All&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Derived Column 1&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command 1&lt;/anyType&gt;
+  &lt;/GeneratedComponentsIdentificationStrings&gt;
+  &lt;FailFixedAttribute&gt;false&lt;/FailFixedAttribute&gt;
+  &lt;FailChangeAttribute&gt;true&lt;/FailChangeAttribute&gt;
+  &lt;UseStartEndDate&gt;true&lt;/UseStartEndDate&gt;
+  &lt;CurrentIndicatorColumn /&gt;
+  &lt;InferredIndicatorColumn /&gt;
+  &lt;ValueCurrent /&gt;
+  &lt;ValueExpired /&gt;
+  &lt;StartDateColumn&gt;Startdate&lt;/StartDateColumn&gt;
+  &lt;EndDateColumn&gt;Enddate&lt;/EndDateColumn&gt;
+  &lt;DateVariable&gt;System::StartTime&lt;/DateVariable&gt;
+  &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
+&lt;/SCDWizardMetadata&gt;</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Data from Staging to DW\Get PublisherKey">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load Data OP to Staging">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="164,41.6"
+          Id="Package\Load Data OP to Staging\Employees Tbl-OP"
+          TopLeft="204.285714720585,32.1176470306712" />
+        <NodeLayout
+          Size="181.6,41.6"
+          Id="Package\Load Data OP to Staging\Staging DimEmployee"
+          TopLeft="212.142857594454,134.588235176146" />
+        <EdgeLayout
+          Id="Package\Load Data OP to Staging.Paths[OLE DB Source Output]"
+          TopLeft="302.114286173485,73.7176470306711">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.8705881454747"
+              Start="0,0"
+              End="0,53.3705881454747">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.3705881454747" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Data OP to Staging\Employees Tbl-OP">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Data OP to Staging\Staging DimEmployee">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

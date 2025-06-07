@@ -1,0 +1,2246 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/13/2024 11:26:16 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-1A195DD"
+  DTS:CreatorName="DESKTOP-1A195DD\Behrouz"
+  DTS:DTSID="{6C312F34-C30B-4A5F-A671-6D93BEAD05C3}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5556.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="10_CDC_Staging_DW_FactSales"
+  DTS:PackageType="5"
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{DEFCF3EB-60FD-42F1-AEAC-B3A7274AE999}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load Data Staging to DW"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{215BC7C1-4A23-46BC-BE76-EE6937DDDE10}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Data Staging to DW"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load Data Staging to DW\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Data Staging to DW\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\Conditional Split.Inputs[Conditional Split Input].Columns[status]"
+                      cachedDataType="i2"
+                      cachedName="status"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[status]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Data Staging to DW\Conditional Split.Outputs[Insert]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Insert"
+                  synchronousInputId="Package\Load Data Staging to DW\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[status]} == 1</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">status == 1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Data Staging to DW\Conditional Split.Outputs[update&amp;Delete]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="update&amp;Delete"
+                  synchronousInputId="Package\Load Data Staging to DW\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Data Staging to DW\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Load Data Staging to DW\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Data Staging to DW\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Data Staging to DW\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Data Staging to DW\Conditional Split 1"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Data Staging to DW\Conditional Split 1.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\Conditional Split 1.Inputs[Conditional Split Input].Columns[status]"
+                      cachedDataType="i2"
+                      cachedName="status"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[status]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Data Staging to DW\Conditional Split 1.Outputs[Update]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Update"
+                  synchronousInputId="Package\Load Data Staging to DW\Conditional Split 1.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[status]} == 2</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">status == 2</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Data Staging to DW\Conditional Split 1.Outputs[delete]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="delete"
+                  synchronousInputId="Package\Load Data Staging to DW\Conditional Split 1.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Data Staging to DW\Conditional Split 1.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Load Data Staging to DW\Conditional Split 1.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Conditional Split 1.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Data Staging to DW\Conditional Split 1.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Conditional Split 1.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Data Staging to DW\Conditional Split 1.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Data Staging to DW\FactSales DW"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="FactSales DW"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[FactSales]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Data Staging to DW\FactSales DW.Connections[OleDbConnection]"
+                  connectionManagerID="{C6104A58-B15E-48BE-9BA6-86AD7E0D3224}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.PubsDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Data Staging to DW\FactSales DW.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\FactSales DW.Inputs[OLE DB Destination Input].Columns[ord_num]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ord_num"
+                      externalMetadataColumnId="Package\Load Data Staging to DW\FactSales DW.Inputs[OLE DB Destination Input].ExternalColumns[ord_num]"
+                      lineageId="Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[ord_num]" />
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\FactSales DW.Inputs[OLE DB Destination Input].Columns[ord_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ord_date"
+                      externalMetadataColumnId="Package\Load Data Staging to DW\FactSales DW.Inputs[OLE DB Destination Input].ExternalColumns[ord_date]"
+                      lineageId="Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[ord_date]" />
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\FactSales DW.Inputs[OLE DB Destination Input].Columns[qty]"
+                      cachedDataType="i2"
+                      cachedName="qty"
+                      externalMetadataColumnId="Package\Load Data Staging to DW\FactSales DW.Inputs[OLE DB Destination Input].ExternalColumns[qty]"
+                      lineageId="Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[qty]" />
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\FactSales DW.Inputs[OLE DB Destination Input].Columns[payterms]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="payterms"
+                      externalMetadataColumnId="Package\Load Data Staging to DW\FactSales DW.Inputs[OLE DB Destination Input].ExternalColumns[payterms]"
+                      lineageId="Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[payterms]" />
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\FactSales DW.Inputs[OLE DB Destination Input].Columns[OrdDateKey]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="OrdDateKey"
+                      externalMetadataColumnId="Package\Load Data Staging to DW\FactSales DW.Inputs[OLE DB Destination Input].ExternalColumns[OrdDateKey]"
+                      lineageId="Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[OrdDateKey]" />
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\FactSales DW.Inputs[OLE DB Destination Input].Columns[StoresKey]"
+                      cachedDataType="i4"
+                      cachedName="StoresKey"
+                      externalMetadataColumnId="Package\Load Data Staging to DW\FactSales DW.Inputs[OLE DB Destination Input].ExternalColumns[StoresKey]"
+                      lineageId="Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[StoresKey]" />
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\FactSales DW.Inputs[OLE DB Destination Input].Columns[Titlekey]"
+                      cachedDataType="i4"
+                      cachedName="Titlekey"
+                      externalMetadataColumnId="Package\Load Data Staging to DW\FactSales DW.Inputs[OLE DB Destination Input].ExternalColumns[Titlekey]"
+                      lineageId="Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[Titlekey]" />
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\FactSales DW.Inputs[OLE DB Destination Input].Columns[price]"
+                      cachedDataType="cy"
+                      cachedName="price"
+                      externalMetadataColumnId="Package\Load Data Staging to DW\FactSales DW.Inputs[OLE DB Destination Input].ExternalColumns[price]"
+                      lineageId="Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[price]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Data Staging to DW\FactSales DW.Inputs[OLE DB Destination Input].ExternalColumns[ord_num]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="ord_num" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data Staging to DW\FactSales DW.Inputs[OLE DB Destination Input].ExternalColumns[Titlekey]"
+                      dataType="i4"
+                      name="Titlekey" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data Staging to DW\FactSales DW.Inputs[OLE DB Destination Input].ExternalColumns[StoresKey]"
+                      dataType="i4"
+                      name="StoresKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data Staging to DW\FactSales DW.Inputs[OLE DB Destination Input].ExternalColumns[OrdDateKey]"
+                      dataType="i4"
+                      name="OrdDateKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data Staging to DW\FactSales DW.Inputs[OLE DB Destination Input].ExternalColumns[qty]"
+                      dataType="i2"
+                      name="qty" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data Staging to DW\FactSales DW.Inputs[OLE DB Destination Input].ExternalColumns[price]"
+                      dataType="cy"
+                      name="price" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data Staging to DW\FactSales DW.Inputs[OLE DB Destination Input].ExternalColumns[payterms]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="payterms" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data Staging to DW\FactSales DW.Inputs[OLE DB Destination Input].ExternalColumns[ord_date]"
+                      dataType="dbTimeStamp"
+                      name="ord_date" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Data Staging to DW\FactSales DW.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load Data Staging to DW\FactSales DW.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\FactSales DW.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Data Staging to DW\FactSales DW.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\FactSales DW.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Data Staging to DW\FactSales DW.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Data Staging to DW\Get Price"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Get Price"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT    Titlekey, price
+FROM         DimTitle</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT    Titlekey, price
+FROM         DimTitle) [refTable]
+where [refTable].[Titlekey] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Titlekey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="price" dataType="DT_CY" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load Data Staging to DW\Get TitleKey.Outputs[Lookup Match Output].Columns[Titlekey]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Data Staging to DW\Get Price.Connections[OleDbConnection]"
+                  connectionManagerID="{C6104A58-B15E-48BE-9BA6-86AD7E0D3224}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.PubsDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Data Staging to DW\Get Price.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\Get Price.Inputs[Lookup Input].Columns[Titlekey]"
+                      cachedDataType="i4"
+                      cachedName="Titlekey"
+                      lineageId="Package\Load Data Staging to DW\Get TitleKey.Outputs[Lookup Match Output].Columns[Titlekey]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Titlekey</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Data Staging to DW\Get Price.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load Data Staging to DW\Get Price.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Get Price.Outputs[Lookup Match Output].Columns[price]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load Data Staging to DW\Get Price.Outputs[Lookup Match Output].Columns[price]"
+                      name="price"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">price</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Data Staging to DW\Get Price.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load Data Staging to DW\Get Price.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Data Staging to DW\Get Price.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load Data Staging to DW\Get Price.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Get Price.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Data Staging to DW\Get Price.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Get Price.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Data Staging to DW\Get Price.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Data Staging to DW\Get StoreKey"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Get StoreKey"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT    StoresKey, StoreAlternatekey
+FROM         Dimstores</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT    StoresKey, StoreAlternatekey
+FROM         Dimstores) [refTable]
+where [refTable].[StoreAlternatekey] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="StoresKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="StoreAlternatekey" dataType="DT_STR" length="4" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[stor_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Data Staging to DW\Get StoreKey.Connections[OleDbConnection]"
+                  connectionManagerID="{C6104A58-B15E-48BE-9BA6-86AD7E0D3224}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.PubsDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Data Staging to DW\Get StoreKey.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\Get StoreKey.Inputs[Lookup Input].Columns[stor_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="stor_id"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[stor_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">StoreAlternatekey</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Data Staging to DW\Get StoreKey.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load Data Staging to DW\Get StoreKey.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Get StoreKey.Outputs[Lookup Match Output].Columns[StoresKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load Data Staging to DW\Get StoreKey.Outputs[Lookup Match Output].Columns[StoresKey]"
+                      name="StoresKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">StoresKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Data Staging to DW\Get StoreKey.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load Data Staging to DW\Get StoreKey.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Data Staging to DW\Get StoreKey.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load Data Staging to DW\Get StoreKey.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Get StoreKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Data Staging to DW\Get StoreKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Get StoreKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Data Staging to DW\Get StoreKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Data Staging to DW\Get TitleKey"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Get TitleKey"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT    Titlekey, TitleAlternatekey
+FROM         DimTitle</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT    Titlekey, TitleAlternatekey
+FROM         DimTitle) [refTable]
+where [refTable].[TitleAlternatekey] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Titlekey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TitleAlternatekey" dataType="DT_STR" length="6" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[title_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Data Staging to DW\Get TitleKey.Connections[OleDbConnection]"
+                  connectionManagerID="{C6104A58-B15E-48BE-9BA6-86AD7E0D3224}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.PubsDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Data Staging to DW\Get TitleKey.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\Get TitleKey.Inputs[Lookup Input].Columns[title_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="title_id"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[title_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">TitleAlternatekey</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Data Staging to DW\Get TitleKey.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load Data Staging to DW\Get TitleKey.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Get TitleKey.Outputs[Lookup Match Output].Columns[Titlekey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load Data Staging to DW\Get TitleKey.Outputs[Lookup Match Output].Columns[Titlekey]"
+                      name="Titlekey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Titlekey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Data Staging to DW\Get TitleKey.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load Data Staging to DW\Get TitleKey.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Data Staging to DW\Get TitleKey.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load Data Staging to DW\Get TitleKey.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Get TitleKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Data Staging to DW\Get TitleKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Get TitleKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Data Staging to DW\Get TitleKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Data Staging to DW\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">  delete from [PubsDW].[dbo].[FactSales]
+  where [ord_num]=? and [Titlekey]=? and [StoresKey]=?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Data Staging to DW\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="{C6104A58-B15E-48BE-9BA6-86AD7E0D3224}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.PubsDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Data Staging to DW\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\OLE DB Command.Inputs[OLE DB Command Input].Columns[ord_num]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ord_num"
+                      externalMetadataColumnId="Package\Load Data Staging to DW\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[ord_num]" />
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\OLE DB Command.Inputs[OLE DB Command Input].Columns[Titlekey]"
+                      cachedDataType="i4"
+                      cachedName="Titlekey"
+                      externalMetadataColumnId="Package\Load Data Staging to DW\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Load Data Staging to DW\Get TitleKey.Outputs[Lookup Match Output].Columns[Titlekey]" />
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\OLE DB Command.Inputs[OLE DB Command Input].Columns[StoresKey]"
+                      cachedDataType="i4"
+                      cachedName="StoresKey"
+                      externalMetadataColumnId="Package\Load Data Staging to DW\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\Load Data Staging to DW\Get StoreKey.Outputs[Lookup Match Output].Columns[StoresKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Data Staging to DW\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Data Staging to DW\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="i4"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Data Staging to DW\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="i4"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Data Staging to DW\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Load Data Staging to DW\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Data Staging to DW\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Load Data Staging to DW\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Data Staging to DW\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Data Staging to DW\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Data Staging to DW\Stg_IncFactSales Table"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Stg_IncFactSales Table"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[stg_IncFactSales]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT stor_id, title_id, ord_num, format(ord_date, 'yyyyMMdd') AS OrdDateKey, qty, payterms, ord_date,status
+FROM      [stg_IncFactSales]</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Connections[OleDbConnection]"
+                  connectionManagerID="{901DACE8-98F2-48B6-AC41-02D05AF9424F}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.Pubs_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[stor_id]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].ExternalColumns[stor_id]"
+                      length="4"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[stor_id]"
+                      name="stor_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[ord_num]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].ExternalColumns[ord_num]"
+                      length="50"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[ord_num]"
+                      name="ord_num"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[title_id]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].ExternalColumns[title_id]"
+                      length="6"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[title_id]"
+                      name="title_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[ord_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].ExternalColumns[ord_date]"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[ord_date]"
+                      name="ord_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[qty]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].ExternalColumns[qty]"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[qty]"
+                      name="qty"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[payterms]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].ExternalColumns[payterms]"
+                      length="50"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[payterms]"
+                      name="payterms"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[OrdDateKey]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].ExternalColumns[OrdDateKey]"
+                      length="4000"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[OrdDateKey]"
+                      name="OrdDateKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[status]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].ExternalColumns[status]"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[status]"
+                      name="status"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].ExternalColumns[stor_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      name="stor_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].ExternalColumns[ord_num]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ord_num" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].ExternalColumns[title_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="title_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].ExternalColumns[ord_date]"
+                      dataType="dbTimeStamp"
+                      name="ord_date" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].ExternalColumns[qty]"
+                      dataType="i2"
+                      name="qty" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].ExternalColumns[payterms]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="payterms" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].ExternalColumns[OrdDateKey]"
+                      dataType="wstr"
+                      length="4000"
+                      name="OrdDateKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].ExternalColumns[status]"
+                      dataType="i2"
+                      name="status" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Error Output].Columns[stor_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Error Output].Columns[stor_id]"
+                      name="stor_id" />
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Error Output].Columns[ord_num]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Error Output].Columns[ord_num]"
+                      name="ord_num" />
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Error Output].Columns[title_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Error Output].Columns[title_id]"
+                      name="title_id" />
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Error Output].Columns[OrdDateKey]"
+                      dataType="wstr"
+                      length="4000"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Error Output].Columns[OrdDateKey]"
+                      name="OrdDateKey" />
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Error Output].Columns[ord_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Error Output].Columns[ord_date]"
+                      name="ord_date" />
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Error Output].Columns[qty]"
+                      dataType="i2"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Error Output].Columns[qty]"
+                      name="qty" />
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Error Output].Columns[payterms]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Error Output].Columns[payterms]"
+                      name="payterms" />
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Error Output].Columns[status]"
+                      dataType="i2"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Error Output].Columns[status]"
+                      name="status" />
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Data Staging to DW\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Load Data Staging to DW\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\Union All.Inputs[Union All Input 1].Columns[stor_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="stor_id"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[stor_id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[stor_id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\Union All.Inputs[Union All Input 1].Columns[ord_num]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ord_num"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[ord_num]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[ord_num]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\Union All.Inputs[Union All Input 1].Columns[title_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="title_id"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[title_id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[title_id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\Union All.Inputs[Union All Input 1].Columns[ord_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ord_date"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[ord_date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[ord_date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\Union All.Inputs[Union All Input 1].Columns[qty]"
+                      cachedDataType="i2"
+                      cachedName="qty"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[qty]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[qty]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\Union All.Inputs[Union All Input 1].Columns[payterms]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="payterms"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[payterms]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[payterms]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\Union All.Inputs[Union All Input 1].Columns[OrdDateKey]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="OrdDateKey"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[OrdDateKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[OrdDateKey]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\Union All.Inputs[Union All Input 1].Columns[status]"
+                      cachedDataType="i2"
+                      cachedName="status"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[status]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[status]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\Union All.Inputs[Union All Input 1].Columns[StoresKey]"
+                      cachedDataType="i4"
+                      cachedName="StoresKey"
+                      lineageId="Package\Load Data Staging to DW\Get StoreKey.Outputs[Lookup Match Output].Columns[StoresKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[StoresKey]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\Union All.Inputs[Union All Input 1].Columns[Titlekey]"
+                      cachedDataType="i4"
+                      cachedName="Titlekey"
+                      lineageId="Package\Load Data Staging to DW\Get TitleKey.Outputs[Lookup Match Output].Columns[Titlekey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[Titlekey]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\Union All.Inputs[Union All Input 1].Columns[price]"
+                      cachedDataType="cy"
+                      cachedName="price"
+                      lineageId="Package\Load Data Staging to DW\Get Price.Outputs[Lookup Match Output].Columns[price]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[price]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Load Data Staging to DW\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\Union All.Inputs[Union All Input 2].Columns[stor_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="stor_id"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[stor_id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[stor_id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\Union All.Inputs[Union All Input 2].Columns[ord_num]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ord_num"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[ord_num]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[ord_num]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\Union All.Inputs[Union All Input 2].Columns[title_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="title_id"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[title_id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[title_id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\Union All.Inputs[Union All Input 2].Columns[ord_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ord_date"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[ord_date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[ord_date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\Union All.Inputs[Union All Input 2].Columns[qty]"
+                      cachedDataType="i2"
+                      cachedName="qty"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[qty]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[qty]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\Union All.Inputs[Union All Input 2].Columns[payterms]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="payterms"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[payterms]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[payterms]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\Union All.Inputs[Union All Input 2].Columns[OrdDateKey]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="OrdDateKey"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[OrdDateKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[OrdDateKey]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\Union All.Inputs[Union All Input 2].Columns[status]"
+                      cachedDataType="i2"
+                      cachedName="status"
+                      lineageId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output].Columns[status]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[status]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\Union All.Inputs[Union All Input 2].Columns[StoresKey]"
+                      cachedDataType="i4"
+                      cachedName="StoresKey"
+                      lineageId="Package\Load Data Staging to DW\Get StoreKey.Outputs[Lookup Match Output].Columns[StoresKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[StoresKey]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\Union All.Inputs[Union All Input 2].Columns[Titlekey]"
+                      cachedDataType="i4"
+                      cachedName="Titlekey"
+                      lineageId="Package\Load Data Staging to DW\Get TitleKey.Outputs[Lookup Match Output].Columns[Titlekey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[Titlekey]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Data Staging to DW\Union All.Inputs[Union All Input 2].Columns[price]"
+                      cachedDataType="cy"
+                      cachedName="price"
+                      lineageId="Package\Load Data Staging to DW\Get Price.Outputs[Lookup Match Output].Columns[price]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[price]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Load Data Staging to DW\Union All.Inputs[Union All Input 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[stor_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[stor_id]"
+                      name="stor_id" />
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[ord_num]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[ord_num]"
+                      name="ord_num" />
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[title_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[title_id]"
+                      name="title_id" />
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[ord_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[ord_date]"
+                      name="ord_date" />
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[qty]"
+                      dataType="i2"
+                      lineageId="Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[qty]"
+                      name="qty" />
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[payterms]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[payterms]"
+                      name="payterms" />
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[OrdDateKey]"
+                      dataType="wstr"
+                      length="4000"
+                      lineageId="Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[OrdDateKey]"
+                      name="OrdDateKey" />
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[status]"
+                      dataType="i2"
+                      lineageId="Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[status]"
+                      name="status" />
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[StoresKey]"
+                      dataType="i4"
+                      lineageId="Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[StoresKey]"
+                      name="StoresKey" />
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[Titlekey]"
+                      dataType="i4"
+                      lineageId="Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[Titlekey]"
+                      name="Titlekey" />
+                    <outputColumn
+                      refId="Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[price]"
+                      dataType="cy"
+                      lineageId="Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1].Columns[price]"
+                      name="price" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load Data Staging to DW.Paths[Insert]"
+              endId="Package\Load Data Staging to DW\Union All.Inputs[Union All Input 1]"
+              name="Insert"
+              startId="Package\Load Data Staging to DW\Conditional Split.Outputs[Insert]" />
+            <path
+              refId="Package\Load Data Staging to DW.Paths[Lookup Match Output]"
+              endId="Package\Load Data Staging to DW\Get TitleKey.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Load Data Staging to DW\Get StoreKey.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load Data Staging to DW.Paths[Lookup Match Output1]"
+              endId="Package\Load Data Staging to DW\Get Price.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Load Data Staging to DW\Get TitleKey.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load Data Staging to DW.Paths[Lookup Match Output2]"
+              endId="Package\Load Data Staging to DW\Conditional Split.Inputs[Conditional Split Input]"
+              name="Lookup Match Output"
+              startId="Package\Load Data Staging to DW\Get Price.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load Data Staging to DW.Paths[OLE DB Command Output]"
+              endId="Package\Load Data Staging to DW\Conditional Split 1.Inputs[Conditional Split Input]"
+              name="OLE DB Command Output"
+              startId="Package\Load Data Staging to DW\OLE DB Command.Outputs[OLE DB Command Output]" />
+            <path
+              refId="Package\Load Data Staging to DW.Paths[OLE DB Source Output]"
+              endId="Package\Load Data Staging to DW\Get StoreKey.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load Data Staging to DW\Stg_IncFactSales Table.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Load Data Staging to DW.Paths[Union All Output 1]"
+              endId="Package\Load Data Staging to DW\FactSales DW.Inputs[OLE DB Destination Input]"
+              name="Union All Output 1"
+              startId="Package\Load Data Staging to DW\Union All.Outputs[Union All Output 1]" />
+            <path
+              refId="Package\Load Data Staging to DW.Paths[Update]"
+              endId="Package\Load Data Staging to DW\Union All.Inputs[Union All Input 2]"
+              name="Update"
+              startId="Package\Load Data Staging to DW\Conditional Split 1.Outputs[Update]" />
+            <path
+              refId="Package\Load Data Staging to DW.Paths[update&amp;Delete]"
+              endId="Package\Load Data Staging to DW\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="update&amp;Delete"
+              startId="Package\Load Data Staging to DW\Conditional Split.Outputs[update&amp;Delete]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate Stg_IncFactSales"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{9205AF9D-7BC1-400A-956B-879BE0C373D3}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate Stg_IncFactSales"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{901DACE8-98F2-48B6-AC41-02D05AF9424F}"
+          SQLTask:SqlStatementSource="Truncate table stg_IncFactSales" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{61B07ACF-927E-43CA-982B-EA48EDA94682}"
+      DTS:From="Package\Load Data Staging to DW"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Truncate Stg_IncFactSales" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="197.6,41.6"
+          Id="Package\Load Data Staging to DW"
+          TopLeft="191.428571836073,48.9411764276894" />
+        <NodeLayout
+          Size="203.2,41.6"
+          Id="Package\Truncate Stg_IncFactSales"
+          TopLeft="191.428571836073,144.52941163802" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="291.628571836073,90.5411764276894">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,53.9882352103306"
+              Start="0,0"
+              End="0,46.4882352103306">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.4882352103306" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load Data Staging to DW">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="140,41.6"
+          Id="Package\Load Data Staging to DW\Get StoreKey"
+          TopLeft="35.7142857903121,45.1176470192761" />
+        <NodeLayout
+          Size="163.2,41.6"
+          Id="Package\Load Data Staging to DW\Conditional Split 1"
+          TopLeft="466.428572421475,383.882352604689" />
+        <NodeLayout
+          Size="142.4,41.6"
+          Id="Package\Load Data Staging to DW\FactSales DW"
+          TopLeft="202.142857573166,455.811764322474" />
+        <NodeLayout
+          Size="120.8,41.6"
+          Id="Package\Load Data Staging to DW\Get Price"
+          TopLeft="294.285714912171,110.882352843983" />
+        <NodeLayout
+          Size="147.2,41.6"
+          Id="Package\Load Data Staging to DW\Get TitleKey"
+          TopLeft="39.2857143693433,131.529411649415" />
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\Load Data Staging to DW\Union All"
+          TopLeft="121.428571687061,366.294117325988" />
+        <NodeLayout
+          Size="187.2,41.6"
+          Id="Package\Load Data Staging to DW\Stg_IncFactSales Table"
+          TopLeft="205.714286152197,0.76470588168257" />
+        <NodeLayout
+          Size="154.4,41.6"
+          Id="Package\Load Data Staging to DW\Conditional Split"
+          TopLeft="271.428572006372,198.058823355805" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Load Data Staging to DW\OLE DB Command"
+          TopLeft="377.857143661502,284.470587985944" />
+        <EdgeLayout
+          Id="Package\Load Data Staging to DW.Paths[update&amp;Delete]"
+          TopLeft="373.028572006372,239.658823355805">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="87.2285716551301,44.8117646301391"
+              Start="0,0"
+              End="87.2285716551301,37.3117646301391">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.2004705574719" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.2004705574719"
+                    Point2="0,18.2004705574719"
+                    Point3="4,18.2004705574719" />
+                  <mssgle:LineSegment
+                    End="83.2285716551301,18.2004705574719" />
+                  <mssgle:CubicBezierSegment
+                    Point1="83.2285716551301,18.2004705574719"
+                    Point2="87.2285716551301,18.2004705574719"
+                    Point3="87.2285716551301,22.2004705574719" />
+                  <mssgle:LineSegment
+                    End="87.2285716551301,37.3117646301391" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="1.53428582756505,23.2004705574719,84.16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Data Staging to DW.Paths[Update]"
+          TopLeft="466.428572421475,404.682352604689">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-225.000000734414,-17.5882352787009"
+              Start="0,0"
+              End="-217.500000734414,-17.5882352787009">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-108.500000367207,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-108.500000367207,0"
+                    Point2="-112.500000367207,0"
+                    Point3="-112.500000367207,-4" />
+                  <mssgle:LineSegment
+                    End="-112.500000367207,-13.5882352787009" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-112.500000367207,-13.5882352787009"
+                    Point2="-112.500000367207,-17.5882352787009"
+                    Point3="-116.500000367207,-17.5882352787009" />
+                  <mssgle:LineSegment
+                    End="-217.500000734414,-17.5882352787009" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-128.780293335957,1,32.5605859375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Data Staging to DW.Paths[Union All Output 1]"
+          TopLeft="181.428571687061,407.894117325988">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="91.9142858861053,47.9176469964858"
+              Start="0,0"
+              End="91.9142858861053,40.4176469964858">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.9588234982429" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.9588234982429"
+                    Point2="0,23.9588234982429"
+                    Point3="4,23.9588234982429" />
+                  <mssgle:LineSegment
+                    End="87.9142858861053,23.9588234982429" />
+                  <mssgle:CubicBezierSegment
+                    Point1="87.9142858861053,23.9588234982429"
+                    Point2="91.9142858861053,23.9588234982429"
+                    Point3="91.9142858861053,27.9588234982429" />
+                  <mssgle:LineSegment
+                    End="91.9142858861053,40.4176469964858" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Data Staging to DW.Paths[OLE DB Source Output]"
+          TopLeft="205.714286152197,21.5647058816826">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-30.0000003618852,44.3529411375936"
+              Start="0,0"
+              End="-22.5000003618852,44.3529411375936">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-11.0000001809426,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-11.0000001809426,0"
+                    Point2="-15.0000001809426,0"
+                    Point3="-15.0000001809426,4" />
+                  <mssgle:LineSegment
+                    End="-15.0000001809426,40.3529411375936" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-15.0000001809426,40.3529411375936"
+                    Point2="-15.0000001809426,44.3529411375936"
+                    Point3="-19.0000001809426,44.3529411375936" />
+                  <mssgle:LineSegment
+                    End="-22.5000003618852,44.3529411375936" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Data Staging to DW.Paths[OLE DB Command Output]"
+          TopLeft="460.257143661502,326.070587985944">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="87.7714287599739,57.8117646187442"
+              Start="0,0"
+              End="87.7714287599739,50.3117646187442">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.9058823093721" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.9058823093721"
+                    Point2="0,28.9058823093721"
+                    Point3="4,28.9058823093721" />
+                  <mssgle:LineSegment
+                    End="83.7714287599739,28.9058823093721" />
+                  <mssgle:CubicBezierSegment
+                    Point1="83.7714287599739,28.9058823093721"
+                    Point2="87.7714287599739,28.9058823093721"
+                    Point3="87.7714287599739,32.9058823093721" />
+                  <mssgle:LineSegment
+                    End="87.7714287599739,50.3117646187442" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Data Staging to DW.Paths[Lookup Match Output2]"
+          TopLeft="351.657143459271,152.482352843983">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45.5764705118219"
+              Start="0,0"
+              End="0,38.0764705118219">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.0764705118219" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,13.233547755911,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Data Staging to DW.Paths[Lookup Match Output1]"
+          TopLeft="186.485714369343,152.329411649415">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="107.800000542828,-20.6470588054316"
+              Start="0,0"
+              End="100.300000542828,-20.6470588054316">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="49.9000002714139,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="49.9000002714139,0"
+                    Point2="53.9000002714139,0"
+                    Point3="53.9000002714139,-4" />
+                  <mssgle:LineSegment
+                    End="53.9000002714139,-16.6470588054316" />
+                  <mssgle:CubicBezierSegment
+                    Point1="53.9000002714139,-16.6470588054316"
+                    Point2="53.9000002714139,-20.6470588054316"
+                    Point3="57.9000002714139,-20.6470588054316" />
+                  <mssgle:LineSegment
+                    End="100.300000542828,-20.6470588054316" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-3.1600387910861,1,114.120078125,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Data Staging to DW.Paths[Lookup Match Output]"
+          TopLeft="109.300000079828,86.7176470192761">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44.8117646301391"
+              Start="0,0"
+              End="0,37.3117646301391">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.3117646301391" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-57.0600390625,10.6558823150696,114.120078125,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Data Staging to DW.Paths[Insert]"
+          TopLeft="324.228572006372,239.658823355805">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-142.800000319311,126.635293970182"
+              Start="0,0"
+              End="-142.800000319311,119.135293970182">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.4334117048125" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,47.4334117048125"
+                    Point2="0,51.4334117048125"
+                    Point3="-4,51.4334117048125" />
+                  <mssgle:LineSegment
+                    End="-138.800000319311,51.4334117048125" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-138.800000319311,51.4334117048125"
+                    Point2="-142.800000319311,51.4334117048125"
+                    Point3="-142.800000319311,55.4334117048125" />
+                  <mssgle:LineSegment
+                    End="-142.800000319311,119.135293970182" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-93.8800392221555,56.4334117048125,44.960078125,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Data Staging to DW\Get StoreKey">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Data Staging to DW\FactSales DW">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Data Staging to DW\Get Price">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Data Staging to DW\Get TitleKey">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Data Staging to DW\Stg_IncFactSales Table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

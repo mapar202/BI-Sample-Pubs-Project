@@ -1,0 +1,10 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="LocalHost.ETLSettings"
+  DTS:DTSID="{C59461F1-0598-4F6F-9AA0-B10E4F5753B7}"
+  DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=.;Initial Catalog=ETLSettings;Integrated Security=True;Application Name=SSIS-Package1-{C59461F1-0598-4F6F-9AA0-B10E4F5753B7}LocalHost.ETLSettings;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

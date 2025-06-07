@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35122.118
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "ETL_Pubs", "ETL_Pubs\ETL_Pubs.dtproj", "{36E9FF34-B0B5-49D8-957F-C0D684C5C945}"
+EndProject
+Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "OLAP_MD_Pubs", "OLAP_MD_Pubs\OLAP_MD_Pubs.dwproj", "{D27250F8-21A8-4AD2-85CE-4DD35C29E808}"
+EndProject
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "Report_Pubs", "Report_Pubs\Report_Pubs.rptproj", "{CAE61EAB-FA78-41D2-B97C-975E5ED32308}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Development|Default = Development|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{36E9FF34-B0B5-49D8-957F-C0D684C5C945}.Debug|Default.ActiveCfg = Development
+		{36E9FF34-B0B5-49D8-957F-C0D684C5C945}.Debug|Default.Build.0 = Development
+		{36E9FF34-B0B5-49D8-957F-C0D684C5C945}.DebugLocal|Default.ActiveCfg = Development
+		{36E9FF34-B0B5-49D8-957F-C0D684C5C945}.DebugLocal|Default.Build.0 = Development
+		{36E9FF34-B0B5-49D8-957F-C0D684C5C945}.Development|Default.ActiveCfg = Development
+		{36E9FF34-B0B5-49D8-957F-C0D684C5C945}.Development|Default.Build.0 = Development
+		{36E9FF34-B0B5-49D8-957F-C0D684C5C945}.Release|Default.ActiveCfg = Development
+		{36E9FF34-B0B5-49D8-957F-C0D684C5C945}.Release|Default.Build.0 = Development
+		{D27250F8-21A8-4AD2-85CE-4DD35C29E808}.Debug|Default.ActiveCfg = Development
+		{D27250F8-21A8-4AD2-85CE-4DD35C29E808}.Debug|Default.Build.0 = Development
+		{D27250F8-21A8-4AD2-85CE-4DD35C29E808}.Debug|Default.Deploy.0 = Development
+		{D27250F8-21A8-4AD2-85CE-4DD35C29E808}.DebugLocal|Default.ActiveCfg = Development
+		{D27250F8-21A8-4AD2-85CE-4DD35C29E808}.DebugLocal|Default.Build.0 = Development
+		{D27250F8-21A8-4AD2-85CE-4DD35C29E808}.DebugLocal|Default.Deploy.0 = Development
+		{D27250F8-21A8-4AD2-85CE-4DD35C29E808}.Development|Default.ActiveCfg = Development
+		{D27250F8-21A8-4AD2-85CE-4DD35C29E808}.Development|Default.Build.0 = Development
+		{D27250F8-21A8-4AD2-85CE-4DD35C29E808}.Development|Default.Deploy.0 = Development
+		{D27250F8-21A8-4AD2-85CE-4DD35C29E808}.Release|Default.ActiveCfg = Development
+		{D27250F8-21A8-4AD2-85CE-4DD35C29E808}.Release|Default.Build.0 = Development
+		{D27250F8-21A8-4AD2-85CE-4DD35C29E808}.Release|Default.Deploy.0 = Development
+		{CAE61EAB-FA78-41D2-B97C-975E5ED32308}.Debug|Default.ActiveCfg = Debug
+		{CAE61EAB-FA78-41D2-B97C-975E5ED32308}.Debug|Default.Build.0 = Debug
+		{CAE61EAB-FA78-41D2-B97C-975E5ED32308}.Debug|Default.Deploy.0 = Debug
+		{CAE61EAB-FA78-41D2-B97C-975E5ED32308}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{CAE61EAB-FA78-41D2-B97C-975E5ED32308}.DebugLocal|Default.Build.0 = DebugLocal
+		{CAE61EAB-FA78-41D2-B97C-975E5ED32308}.Development|Default.ActiveCfg = DebugLocal
+		{CAE61EAB-FA78-41D2-B97C-975E5ED32308}.Development|Default.Build.0 = DebugLocal
+		{CAE61EAB-FA78-41D2-B97C-975E5ED32308}.Release|Default.ActiveCfg = Release
+		{CAE61EAB-FA78-41D2-B97C-975E5ED32308}.Release|Default.Build.0 = Release
+		{CAE61EAB-FA78-41D2-B97C-975E5ED32308}.Release|Default.Deploy.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1283743A-CA49-4A41-AAF9-0E9290962DA0}
+	EndGlobalSection
+EndGlobal

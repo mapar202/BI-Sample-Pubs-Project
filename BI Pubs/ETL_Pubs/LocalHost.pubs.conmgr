@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="LocalHost.pubs"
+  DTS:DTSID="{B6E13E96-402D-4B52-8BB1-18E5F0E0AFE6}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=.;Initial Catalog=pubs;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{B6E13E96-402D-4B52-8BB1-18E5F0E0AFE6}LocalHost.pubs;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
